@@ -1,0 +1,160 @@
+/* Animate the logo with keyframes */
+/* Define the keyframes */
+@keyframes logoAnimation {
+    from {
+      width: 25px;
+      opacity: 0;
+    }
+    to {
+      width: 475px;
+      opacity: 1;
+    }
+  }
+
+  /* Apply the animation to the logo element */
+#logo {
+    animation: logoAnimation 5s forwards;
+  }
+
+/* body style */
+body{
+    font-family: "Poppins", serif;
+    background-color: #f1f1f1;
+    background-image: url(../images/concrete_seamless.png);
+}
+
+/* header tag */
+header{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+/* nav_links class */
+.nav_links{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+/* link color */
+a:link, a:visited{
+    color: #0000EE
+}
+
+/* header elements that are direct children of a card class */
+.card > header{
+    background: #288088;
+    border: solid 2px #45ADAD;
+    padding: 20px 0px 20px 0px;
+    border-radius: 50px 50px 0px 0px;
+
+}
+.card{
+    border-radius: 50px 50px 0px 0px;
+}
+
+/* card class and pricing class */
+.card{
+    width: 450px;
+}
+
+.pricing{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+/* style gallery */
+.gallery > img{
+    border: 10px solid #50C7C7;
+    margin: 10px;
+    width: 300px;
+}
+
+/* use flex for gallery */
+.gallery{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* screen-size is greater than 900px */
+/* Modify the first header (the one not inside main) so that it remains visible at the top of the screen even as we scroll down. */
+@media screen and (min-width: 900px){
+   header{
+         flex-direction: row;
+         justify-content: space-between;
+   }
+
+   .nav_links{
+         flex-direction: row;
+         justify-content: flex-end;
+   }
+
+   body > header{
+    position: sticky;
+    top: 0;
+   }
+
+   .card{
+    flex-basis: 275px;
+}
+
+    .pricing{
+        flex-direction: row;
+    }
+}
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    #logo {
+        animation-duration: 0ms;
+    }
+}
+
+/* printed in portrait mode */
+@media print and (orientation: portrait){
+    body{
+        font-family: Arial, Helvetica;
+        background-image: none;
+    }
+
+    .nav_links{
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    nav {
+        align-self: stretch;
+    }
+
+    .pricing{
+        flex-direction: row;
+        align-items: flex-end;
+    }
+
+    .card{
+        border: 2px solid #45ADDD;
+        flex-basis: 325px;
+    }
+
+    #gallery, .gallery {
+        display: none;
+    }
+
+    /* !!!!! */
+    .card li:nth-of-type(2)::after {
+        content: '👍';
+    }
+
+    #logo {
+        animation: none;
+        width: 475px;
+        opacity: 100%;
+    }
+}
